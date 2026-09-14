@@ -5,48 +5,15 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Kreisverkehr – 4x VZ 205 + VZ 215 – 5 cm</title>
 <style>
-*{box-sizing:border-box}
-html,body{margin:0;padding:0}
-body{font-family:Arial,sans-serif;background:#ededed;color:#111}
-.toolbar{position:sticky;top:0;z-index:10;display:flex;gap:14px;align-items:center;padding:12px 16px;background:#fff;border-bottom:1px solid #ccc}
-button{border:0;border-radius:8px;background:#111;color:#fff;font-size:16px;padding:10px 18px;cursor:pointer}
-.note{font-size:13px;color:#444}
-.sheet{width:210mm;height:297mm;margin:12px auto;background:#fff;padding:18mm 20mm;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:12mm 18mm;overflow:hidden}
-.set{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8mm;min-height:115mm}
-.signbox{width:50mm;height:50mm;display:flex;align-items:center;justify-content:center}
-.vz205{width:50mm;height:auto;max-height:50mm;display:block}
-.vz215{width:50mm;height:50mm;display:block}
-@media(max-width:850px){.sheet{zoom:.48;margin:10px auto}.toolbar{flex-wrap:wrap}}
-@media print{
- body{background:#fff}
- .toolbar{display:none}
- .sheet{margin:0;width:210mm;height:297mm;padding:18mm 20mm;box-shadow:none}
- @page{size:A4 portrait;margin:0}
-}
+*{box-sizing:border-box}html,body{margin:0;padding:0}body{font-family:Arial,sans-serif;background:#ededed;color:#111}.toolbar{position:sticky;top:0;z-index:10;padding:10px 14px;background:#fff;border-bottom:1px solid #ccc}button{border:0;border-radius:6px;background:#111;color:#fff;padding:9px 18px;font-size:15px}.note{margin-left:10px;font-size:12px}.sheet{width:210mm;height:297mm;margin:10px auto;background:#fff;padding:18mm 20mm;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:10mm 18mm}.set{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8mm}.signbox{width:50mm;height:50mm;display:flex;align-items:center;justify-content:center}.sign{width:50mm;height:50mm;display:block}.vz205svg{width:50mm;height:50mm}.vz215svg{width:50mm;height:50mm}@media(max-width:850px){.sheet{zoom:.48}}@media print{body{background:#fff}.toolbar{display:none}.sheet{margin:0;width:210mm;height:297mm;padding:18mm 20mm}@page{size:A4 portrait;margin:0}}
 </style>
-</head>
-<body>
-<div class="toolbar">
-  <button onclick="window.print()">Drucken</button>
-  <span class="note">Beim Drucken: 100 % / Tatsächliche Größe. Alle Zeichen sind 5 cm breit; VZ 215 hat exakt 5 cm Durchmesser.</span>
-</div>
-<main class="sheet">
-  <section class="set">
-    <div class="signbox"><img class="vz205" src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Zeichen_205_-_Vorfahrt_gew%C3%A4hren%21_StVO_1970.svg" alt="VZ 205 Vorfahrt gewähren"></div>
-    <div class="signbox"><img class="vz215" src="https://upload.wikimedia.org/wikipedia/commons/7/74/Zeichen_215_-_Kreisverkehr%2C_StVO_2000.svg" alt="VZ 215 Kreisverkehr"></div>
-  </section>
-  <section class="set">
-    <div class="signbox"><img class="vz205" src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Zeichen_205_-_Vorfahrt_gew%C3%A4hren%21_StVO_1970.svg" alt="VZ 205 Vorfahrt gewähren"></div>
-    <div class="signbox"><img class="vz215" src="https://upload.wikimedia.org/wikipedia/commons/7/74/Zeichen_215_-_Kreisverkehr%2C_StVO_2000.svg" alt="VZ 215 Kreisverkehr"></div>
-  </section>
-  <section class="set">
-    <div class="signbox"><img class="vz205" src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Zeichen_205_-_Vorfahrt_gew%C3%A4hren%21_StVO_1970.svg" alt="VZ 205 Vorfahrt gewähren"></div>
-    <div class="signbox"><img class="vz215" src="https://upload.wikimedia.org/wikipedia/commons/7/74/Zeichen_215_-_Kreisverkehr%2C_StVO_2000.svg" alt="VZ 215 Kreisverkehr"></div>
-  </section>
-  <section class="set">
-    <div class="signbox"><img class="vz205" src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Zeichen_205_-_Vorfahrt_gew%C3%A4hren%21_StVO_1970.svg" alt="VZ 205 Vorfahrt gewähren"></div>
-    <div class="signbox"><img class="vz215" src="https://upload.wikimedia.org/wikipedia/commons/7/74/Zeichen_215_-_Kreisverkehr%2C_StVO_2000.svg" alt="VZ 215 Kreisverkehr"></div>
-  </section>
-</main>
-</body>
-</html>
+</head><body>
+<div class="toolbar"><button onclick="window.print()">Drucken</button><span class="note">Druck: 100 % / Tatsächliche Größe – jedes Zeichen 5 cm.</span></div>
+<main class="sheet" id="sheet"></main>
+<script>
+const vz205=`<svg class="sign vz205svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-label="VZ 205"><path d="M50 91 L7 16 Q5 12 10 12 H90 Q95 12 93 16 Z" fill="#fff" stroke="#c8102e" stroke-width="8" stroke-linejoin="round"/></svg>`;
+const vz215=`<svg class="sign vz215svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-label="VZ 215 Kreisverkehr"><circle cx="50" cy="50" r="48" fill="#0878be"/><circle cx="50" cy="50" r="47" fill="none" stroke="#fff" stroke-width="2"/><g fill="#fff"><path d="M47 18 C32 19 22 27 17 38 L10 34 L14 53 L30 42 L23 40 C27 32 36 27 47 26 Z"/><path d="M72 31 C80 42 80 54 75 64 L82 68 L64 74 L65 55 L71 60 C74 52 73 43 67 36 L61 40 L64 21 L82 28 Z"/><path d="M28 69 C38 78 52 81 64 77 L65 85 L79 71 L61 64 L63 71 C53 74 43 72 35 65 L40 59 L21 61 Z"/></g></svg>`;
+const sheet=document.getElementById('sheet');
+for(let i=0;i<4;i++){const s=document.createElement('section');s.className='set';s.innerHTML=`<div class="signbox">${vz205}</div><div class="signbox">${vz215}</div>`;sheet.appendChild(s)}
+</script>
+</body></html>
